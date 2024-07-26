@@ -1,0 +1,57 @@
+﻿@model CRUDSignUp.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete Employee";
+    var errorMessage = TempData["errorMessage"]?.ToString();
+
+}
+
+<h3>@ViewData["Title"]?.ToString()</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+
+    <div class="alert alert-danger">
+        <b>Error: </b>@errorMessage
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+<form method="post" action="Delete" class="mt-3">
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">First Name</label>
+        <input type="text" class="form-control" asp-for="FirstName" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Last Name</label>
+        <input type="text" class="form-control" asp-for="LastName" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Date Of Birth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-control" asp-for="Email" readonly />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Salary</label>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" asp-for="Salary" readonly />
+        </div>
+    </div>
+    
+        <div class="d-grid">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure autofocus delete employee : @Model.FullName')">Delete</button>
+        </div>
+   
+
+
+</form>
+
+
+
